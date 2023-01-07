@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-const Word = ({ word }) => {
+const Word = ({ word: w }) => {
+  const [word, setWord] = useState(w);
   const [isShow, setIsShow] = useState(false);
   const [isDone, setIsDone] = useState(word.isDone);
 
@@ -25,6 +26,22 @@ const Word = ({ word }) => {
     });
   };
 
+  const deleteWord = () => {
+    if (window.confirm('삭제 하시겠습니까?'))
+      fetch(`http://localhost:3001/words/${word.id}`, {
+        method: 'DELETE',
+      }).then(res => {
+        if (res.ok) {
+          setWord({ id: 0 });
+        }
+      });
+  };
+
+  //! word.id 가 0 이면 그 데이터를 null로 바꾸겠다는 의미, data.json에서 null은 자료 삭제를 의미
+  if (word.id === 0) {
+    return null;
+  }
+
   return (
     <tr className={isDone ? 'off' : ''}>
       <td>
@@ -34,7 +51,7 @@ const Word = ({ word }) => {
       <td>{word.eng}</td>
       <td>
         <button onClick={toggleShow}>{isShow ? '뜻 숨기기' : '뜻 보기'}</button>
-        <button>삭제</button>
+        <button onClick={deleteWord}>삭제</button>
       </td>
     </tr>
   );
