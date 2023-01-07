@@ -8,8 +8,12 @@ const Header = () => {
         <Link to="/">영어 단어집</Link>
       </h1>
       <div className="menu">
-        <button>단어 추가</button>
-        <button>Day 추가</button>
+        <Link to="/create_word" className="link">
+          단어 추가
+        </Link>
+        <Link to="/" className="link">
+          Day 추가
+        </Link>
       </div>
     </div>
   );
