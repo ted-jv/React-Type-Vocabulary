@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import CreateWord from './components/CreateWord';
-import Day from './components/Day';
-import DayList from './components/DayList';
-import Header from './components/Header';
-import NotFound from './pages/NotFound';
+import Header from './components/common/Header';
+import HomePage from 'pages/HomePage';
+import NotFoundPage from './pages/NotFoundPage';
+import DayWordsPage from 'pages/DayWordsPage';
+import CreateWordPage from 'pages/CreateWordPage';
 
 function App() {
   return (
@@ -11,10 +11,10 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<DayList />}></Route>
-          <Route path="/day/:day" element={<Day />}></Route>
-          <Route path="/create_word" element={<CreateWord />}></Route>
-          <Route path="*" element={<NotFound />}></Route>
+          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/day/:day" element={<DayWordsPage />}></Route>
+          <Route path="/create_word" element={<CreateWordPage />}></Route>
+          <Route path="*" element={<NotFoundPage />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
