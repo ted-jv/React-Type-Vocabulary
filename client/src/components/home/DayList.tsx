@@ -1,10 +1,7 @@
 import { Link } from 'react-router-dom';
-import useFetch from '../hooks/useFetch';
+import useFetch from '../../hooks/useFetch';
+import { IDays } from '../../types/days';
 
-export interface IDays {
-  id: number;
-  day: number;
-}
 const DayList = () => {
   const days: IDays[] = useFetch('http://localhost:3001/days');
 
